@@ -6,6 +6,9 @@ from dotenv import find_dotenv
 from src.db import MongoDBConnectionPool
 load_dotenv(find_dotenv())
 
+#Cache para a consulta de tokens ativos
+cache_tokens = {}
+
 #Instanciamento do pool de conexoes que será usado durante toda a aplicação
 pool_de_conexoes = MongoDBConnectionPool(10, os.getenv('string_de_conexao'))
 
