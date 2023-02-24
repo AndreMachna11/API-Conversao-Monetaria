@@ -61,6 +61,9 @@ class ConversaoMonetariaService():
             documento_procurando = {"_id":"conversao_lastreada_em_dolar"}
             documento_inserido = {"data_base": hoje, "USD": 1, "BRL": real, "EUR": euro,"BTC": bitcoin,"ETC":eth}
             colecao.find_one_and_update(documento_procurando,{'$set': documento_inserido},upsert=True)
+            
+            #Devolve a conexão ao pool de conexoes
+            pool_de_conexoes.release_connection(conn)
 
             #convertendo para dolar o valor informado
             valor_dolar = documento_inserido[de]*valor 
@@ -76,5 +79,8 @@ class ConversaoMonetariaService():
 
             #convertendo de dolar para valor alvo
             valor_alvo = valor_dolar*dados[para]
+            
+            #Devolve a conexão ao pool de conexoes
+            pool_de_conexoes.release_connection(conn)
 
             return str(valor_alvo) + ' ' + para
