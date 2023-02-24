@@ -3,8 +3,7 @@ from flask_classful import route
 from flask import request
 from src.autenticacao.service.autenticacaoService import AutenticacaoService
 from src import GeraResponse
-import datetime
-
+from src import cache_tokens
 class AutenticacaoView(FlaskView):
     route_base = 'autenticacao'
 
@@ -36,9 +35,11 @@ class AutenticacaoView(FlaskView):
 
             #Verifica se o retorno é um token ou uma mensagem de erro
             if len(token) == 64:
+                
                 body = {
                     "token" : token
                 }
+                
                 return RESPONSE.gera_response(200,"SUCESSO",body)
             else:
                 return RESPONSE.gera_response(400,token,{})
