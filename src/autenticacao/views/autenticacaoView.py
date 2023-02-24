@@ -4,6 +4,7 @@ from flask import request
 from src.autenticacao.service.autenticacaoService import AutenticacaoService
 from src import GeraResponse
 from src import cache_tokens
+
 class AutenticacaoView(FlaskView):
     route_base = 'autenticacao'
 
