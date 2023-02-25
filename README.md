@@ -27,6 +27,7 @@ post -url: http://127.0.0.1:5000/autenticacao/login
 headers: {"login" : "teste@teste.com", "senha": "Lmmbupjo123@"}
   
 O retorno será um JSON no formato:
+
     {
       "status_code": 200,
       "message_response": "SUCESSO",
@@ -45,6 +46,7 @@ headers: {"Content-Type" : "application/json", "token": "6f1fc2d0a558a94f1ac0a4f
 body: {"valor": 4,"de":"brl", para:"eur"}
 
 O retorno será um JSON no formato:
+
     {
       "status_code": 200,
       "message_response": "SUCESSO",
