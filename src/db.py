@@ -13,6 +13,7 @@ class MongoDBConnectionPool:
         self.lock = Lock()
         self.connections = set()
 
+    #Funçao para pegar uma conexão da pool
     def get_connection(self):
         with self.lock:
             if not self.connection_queue.empty():
@@ -28,10 +29,12 @@ class MongoDBConnectionPool:
                 return connection
         return None
 
+    #Função para devolver uma conexão a pool
     def release_connection(self, connection):
         expiry = datetime.now() + timedelta(seconds=self.timeout)
         self.connection_queue.put((connection, expiry))
 
+    #Funçao para fechar a pool
     def close(self):
         with self.lock:
             while not self.connection_queue.empty():
