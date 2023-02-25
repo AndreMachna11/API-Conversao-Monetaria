@@ -22,35 +22,35 @@ class ConversaoMonetariaService():
             url = 'https://min-api.cryptocompare.com/data/price'
 
             # Parâmetros da requisição
-            params1 = {
+            params_brl = {
                 'fsym': 'USD',
                 'tsyms': 'BRL'
             }
 
-            params2 = {
+            params_eur = {
                 'fsym': 'USD',
                 'tsyms': 'EUR'
             }
 
-            params3 = {
+            params_btc = {
                 'fsym': 'USD',
                 'tsyms': 'BTC'
             }
 
-            params4 = {
+            params_eth = {
                 'fsym': 'USD',
                 'tsyms': 'ETH'
             }
 
-            response1 = requests.get(url, params=params1)
-            response2 = requests.get(url, params=params2)
-            response3 = requests.get(url, params=params3)
-            response4 = requests.get(url, params=params4)
+            response_brl = requests.get(url, params=params_brl)
+            response_eur = requests.get(url, params=params_eur)
+            response_btc = requests.get(url, params=params_btc)
+            response_eth = requests.get(url, params=params_eth)
 
-            result1 = response1.json()
-            result2 = response2.json()
-            result3 = response3.json()
-            result4 = response4.json()
+            result1 = response_brl.json()
+            result2 = response_eur.json()
+            result3 = response_btc.json()
+            result4 = response_eth.json()
 
             real = result1['BRL']
             euro = result2['EUR']
@@ -59,7 +59,7 @@ class ConversaoMonetariaService():
 
             #Registra no banco de dados a hora de geração e o token gerado
             documento_procurando = {"_id":"conversao_lastreada_em_dolar"}
-            documento_inserido = {"data_base": hoje, "USD": 1, "BRL": real, "EUR": euro,"BTC": bitcoin,"ETC":eth}
+            documento_inserido = {"data_base": hoje, "USD": 1, "BRL": real, "EUR": euro,"BTC": bitcoin,"ETH":eth}
             colecao.find_one_and_update(documento_procurando,{'$set': documento_inserido},upsert=True)
             
             #Devolve a conexão ao pool de conexoes
