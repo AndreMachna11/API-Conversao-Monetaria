@@ -66,7 +66,7 @@ class ConversaoMonetariaService():
             pool_de_conexoes.release_connection(conn)
 
             #convertendo para dolar o valor informado
-            valor_dolar = documento_inserido[de]*valor 
+            valor_dolar = valor/documento_inserido[de]
 
             #convertendo de dolar para valor alvo
             valor_alvo = valor_dolar*documento_inserido[para]
@@ -75,7 +75,7 @@ class ConversaoMonetariaService():
         else:
 
             #convertendo para dolar o valor informado
-            valor_dolar = dados[de]*valor 
+            valor_dolar = valor/dados[de] 
 
             #convertendo de dolar para valor alvo
             valor_alvo = valor_dolar*dados[para]
