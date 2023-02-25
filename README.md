@@ -51,7 +51,7 @@ O retorno será um JSON no formato:
       "status_code": 200,
       "message_response": "SUCESSO",
       "body": {
-        "valor_convertido": "0.7334 EUR"
+        "valor_convertido": "0.7267713519724243 EUR"
       }
     }
 
