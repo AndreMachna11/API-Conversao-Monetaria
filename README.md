@@ -1,5 +1,5 @@
 # API-Conversao-Monetaria
--API construida em python utilizando o framework Flask e banco de dados em nuvem MongoDB
+-API construida em Python utilizando o framework Flask e banco de dados em nuvem MongoDB
 
 -Converte valores monetários entre as moedas USD, BRL, EUR, BTC, ETH
 
