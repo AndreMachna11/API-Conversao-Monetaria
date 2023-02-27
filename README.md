@@ -36,7 +36,7 @@ O retorno será um JSON no formato:
       }
     }
 
-Onde o token tem validade de 24 horas deve ser usado para o proximo endpoint
+Onde o token tem validade de 24 horas e deve ser usado para acessar os outros end points desta api
 
 # Conversao Monetaria
 post -url: http://127.0.0.1:5000/conversaoMonetaria/conversao
