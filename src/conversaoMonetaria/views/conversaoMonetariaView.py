@@ -70,11 +70,11 @@ class ConversaoMonetariaView(FlaskView):
 
 
         #Chamada do Serviço e montagem da resposta em json
-        # try:
-        CONVERSOR = ConversaoMonetariaService()
-        valor_convertido = CONVERSOR.conversor(valor,de,para)
+        try:
+            CONVERSOR = ConversaoMonetariaService()
+            valor_convertido = CONVERSOR.conversor(valor,de,para)
 
-        dict_retorno = {"valor_convertido" : str(valor_convertido)}
-        return RESPONSE.gera_response(200,"SUCESSO",dict_retorno)
-        # except:
-        #     return RESPONSE.gera_response(500,"ERRO INTERNO",{})
+            dict_retorno = {"valor_convertido" : str(valor_convertido)}
+            return RESPONSE.gera_response(200,"SUCESSO",dict_retorno)
+        except:
+            return RESPONSE.gera_response(500,"ERRO INTERNO",{})
